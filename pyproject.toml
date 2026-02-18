@@ -1,0 +1,68 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "spatiallm"
+version = "0.1.0"
+description = "A spatial language model toolkit"
+readme = "README.md"
+requires-python = ">=3.9"
+license = {text = "GPL"}
+authors = [
+    {name = "Matthew X. Curinga", email = "matt@curinga.com"}
+]
+keywords = ["spatial", "llm", "geoparse", "openai"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+]
+
+dependencies = [
+    "openai",
+    "python-dotenv",
+    "requests"
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "pytest-cov",
+    "invoke",
+]
+
+[project.urls]
+Homepage = "https://github.com/yourusername/spatiallm"
+Repository = "https://github.com/yourusername/spatiallm"
+Documentation = "https://github.com/yourusername/spatiallm/blob/main/README.md"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["spatiallm*"]
+exclude = ["tests*", "docs*", "examples*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = "-v --tb=short"
+
+[tool.coverage.run]
+source = ["spatiallm"]
+omit = ["*/tests/*", "*/test_*.py"]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "raise AssertionError",
+    "raise NotImplementedError",
+    "if __name__ == .__main__.:",
+]

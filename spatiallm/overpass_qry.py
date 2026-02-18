@@ -36,6 +36,7 @@ out tags center;
 """.strip()
 
 
+
 def main():
     query = build_query(PLACES)
     r = requests.post(OVERPASS_URL, data=query.encode("utf-8"), timeout=90)
